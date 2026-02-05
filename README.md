@@ -1,0 +1,2 @@
+# spartan-model
+My model
