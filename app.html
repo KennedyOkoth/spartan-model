@@ -1,0 +1,2333 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Comprehensive Framework for Building a Profitable Multi-Market Football Prediction System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #475569;
+            --accent: #059669;
+            --muted: #64748b;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .serif {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        }
+        
+        .accent-gradient {
+            background: linear-gradient(90deg, var(--accent), #10b981);
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 320px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 320px;
+            min-height: 100vh;
+        }
+        
+        .toc-link {
+            transition: all 0.2s ease;
+        }
+        
+        .toc-link:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+        
+        .toc-link.active {
+            color: var(--accent);
+            font-weight: 600;
+            border-left: 3px solid var(--accent);
+            padding-left: 0.75rem;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 4rem 0;
+        }
+        
+        .citation {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 0 0.125rem;
+            transition: all 0.2s ease;
+        }
+        
+        .citation:hover {
+            background: #047857;
+            transform: translateY(-1px);
+        }
+        
+        .insight-highlight {
+            background: linear-gradient(90deg, rgba(5, 150, 105, 0.1), rgba(16, 185, 129, 0.1));
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        
+        .performance-metric {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 1280px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .toc-overlay {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .hero-stats .text-2xl {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .toc-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h2 class="text-xl font-bold serif text-slate-800 mb-4">Contents</h2>
+        <div class="space-y-2">
+          <a href="#executive-summary" class="toc-link block text-sm text-slate-600 hover:text-emerald-600">Executive Summary</a>
+          <a href="#core-prediction" class="toc-link block text-sm text-slate-600 hover:text-emerald-600">1. Core Prediction Targets</a>
+          <div class="ml-4 space-y-1">
+            <a href="#match-outcome" class="toc-link block text-xs text-slate-500 hover:text-emerald-600">1.1 Match Outcome</a>
+            <a href="#score-goals" class="toc-link block text-xs text-slate-500 hover:text-emerald-600">1.2 Score &amp; Goals</a>
+            <a href="#set-piece" class="toc-link block text-xs text-slate-500 hover:text-emerald-600">1.3 Set-Piece Markets</a>
+          </div>
+          <a href="#data-infrastructure" class="toc-link block text-sm text-slate-600 hover:text-emerald-600">2. European Data Infrastructure</a>
+          <div class="ml-4 space-y-1">
+            <a href="#primary-sources" class="toc-link block text-xs text-slate-500 hover:text-emerald-600">2.1 Primary Sources</a>
+            <a href="#live-apis" class="toc-link block text-xs text-slate-500 hover:text-emerald-600">2.2 Live APIs</a>
+            <a href="#data-quality" class="toc-link block text-xs text-slate-500 hover:text-emerald-600">2.3 Data Quality</a>
+          </div>
+          <a href="#ml-architecture" class="toc-link block text-sm text-slate-600 hover:text-emerald-600">3. ML Architecture</a>
+          <div class="ml-4 space-y-1">
+            <a href="#gradient-boosting" class="toc-link block text-xs text-slate-500 hover:text-emerald-600">3.1 Gradient Boosting</a>
+            <a href="#neural-networks" class="toc-link block text-xs text-slate-500 hover:text-emerald-600">3.2 Neural Networks</a>
+            <a href="#ensembles" class="toc-link block text-xs text-slate-500 hover:text-emerald-600">3.3 Ensembles</a>
+          </div>
+          <a href="#feature-engineering" class="toc-link block text-sm text-slate-600 hover:text-emerald-600">4. Feature Engineering</a>
+          <a href="#implementation" class="toc-link block text-sm text-slate-600 hover:text-emerald-600">5. Model Implementation</a>
+          <a href="#profitability" class="toc-link block text-sm text-slate-600 hover:text-emerald-600">6. Profitability &amp; Strategy</a>
+          <a href="#roadmap" class="toc-link block text-sm text-slate-600 hover:text-emerald-600">7. Technical Roadmap</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Overlay for mobile menu -->
+    <div class="toc-overlay" onclick="toggleTOC()"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-gradient relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <img src="https://kimi-web-img.moonshot.cn/img/placeholder-0620/图片2.png" alt="Abstract visualization of football prediction algorithms" class="w-full h-full object-cover" size="wallpaper" aspect="wide" query="football prediction algorithm abstract visualization" referrerpolicy="no-referrer" data-modified="1"/>
+        </div>
+        <div class="relative z-10 px-8 py-16">
+          <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+              <!-- Title Block -->
+              <div class="lg:col-span-2 hero-content">
+                <h1 class="text-5xl lg:text-6xl font-bold serif text-white mb-6 leading-tight">
+                  <em class="italic text-emerald-300">Comprehensive Framework</em>
+                  <br/>
+                  for Building a Profitable
+                  <br/>
+                  Multi-Market Football
+                  <br/>
+                  Prediction System
+                </h1>
+                <p class="text-xl text-slate-300 mb-8 max-w-2xl">
+                  A technically validated approach combining XGBoost regression, ensemble architectures,
+                  and European data infrastructure for sustained betting profitability.
+                </p>
+              </div>
+
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 hero-stats">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                  <div class="text-2xl font-bold text-emerald-300">0.8%</div>
+                  <div class="text-sm text-slate-300">Average Profit per Bet</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                  <div class="text-2xl font-bold text-emerald-300">12 Years</div>
+                  <div class="text-sm text-slate-300">Validation Period</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                  <div class="text-2xl font-bold text-emerald-300">MAE &lt; 2.0</div>
+                      <div class="text-sm text-slate-300">Corners Prediction</div>
+                  </div>
+                  <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                    <div class="text-2xl font-bold text-emerald-300">22 Leagues</div>
+                    <div class="text-sm text-slate-300">Data Coverage</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="px-8 py-16 bg-white">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold serif text-slate-800 mb-8">Executive Summary</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <div class="insight-highlight">
+              <p class="text-lg font-semibold text-slate-800 mb-4">
+                The most profitable and technically validated football prediction system combines
+                <strong>XGBoost regression for specialized markets</strong> with
+                <strong>ensemble architectures for multi-market coverage</strong>.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+              <div class="performance-metric">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-chart-line text-emerald-600 mr-2"></i>
+                  Proven Profitability
+                </h3>
+                <ul class="space-y-2 text-slate-600">
+                  <li><strong>0.8% average profit per bet</strong> over 12 years (GAP-based model)
+                    <a href="#ref-50" class="citation">50</a>
+                    <a href="#ref-520" class="citation">520</a>
+                  </li>
+                  <li><strong>MAE &lt; 2.0 corners</strong> prediction accuracy <a href="#ref-500" class="citation">500</a>
+                      <a href="#ref-537" class="citation">537</a>
+                  </li>
+                  <li>Ensemble models achieve <strong>55.9-62.7% accuracy</strong>
+                    <a href="#ref-439" class="citation">439</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="performance-metric">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-database text-emerald-600 mr-2"></i>
+                  Data Infrastructure
+                </h3>
+                <ul class="space-y-2 text-slate-600">
+                  <li><strong>Football-Data.co.uk</strong>: 31 seasons, 22 leagues
+                    <a href="#ref-310" class="citation">310</a>
+                  </li>
+                  <li><strong>FBref.com</strong> via soccerdata: Advanced metrics (xG)
+                    <a href="#ref-376" class="citation">376</a>
+                  </li>
+                  <li><strong>Sportmonks API</strong>: Real-time fixtures &amp; statistics
+                    <a href="#ref-385" class="citation">385</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p class="text-lg text-slate-700 leading-relaxed">
+              Success requires disciplined probability calibration, Kelly criterion stake sizing,
+              and niche market focus where bookmaker attention is lower. The reference implementation
+              <code>futbol_corners_forecast</code> proves production viability with Hugging Face deployment,
+              targeting corners markets with demonstrated MAE &lt; 2.0—sufficient for profitable betting.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Core Prediction Targets -->
+      <section id="core-prediction" class="px-8 py-16">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif text-slate-800 mb-12">1. Core Prediction Targets and Market Requirements</h2>
+
+          <!-- Match Outcome Prediction -->
+          <div id="match-outcome" class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">1.1 Match Outcome Prediction</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              <div class="lg:col-span-2">
+                <h4 class="text-xl font-semibold text-slate-800 mb-4">Classification Accuracy &amp; Probability Calibration</h4>
+                <p class="text-slate-700 mb-6">
+                  The foundation rests on accurate classification of match outcomes into three discrete categories:
+                  home victory, draw, or away victory. Draws typically occur in <strong>25-30% of matches</strong>
+                  across European leagues, creating structural skew that models must address through careful
+                  sampling strategies or class-weighted loss functions.
+                </p>
+
+                <div class="insight-highlight">
+                  <p class="font-semibold text-slate-800 mb-2">
+                    <i class="fas fa-lightbulb text-emerald-600 mr-2"></i>
+                    Key Insight
+                  </p>
+                  <p class="text-slate-700">
+                    Research demonstrates that ensemble approaches combining multiple base learners can achieve
+                    classification accuracies ranging from <strong>55.9% to 62.7%</strong> on validation datasets,
+                    with the upper bound approaching theoretical limits of predictability given football&#39;s stochastic nature.
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-slate-50 rounded-lg p-6">
+                <h5 class="font-semibold text-slate-800 mb-4">Algorithm Performance Comparison</h5>
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between">
+                    <span>Multinomial Logistic Regression</span>
+                    <span class="font-semibold text-emerald-600">59.55%</span>
+                    <a href="#ref-497" class="citation">497</a>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Random Forest</span>
+                    <span class="font-semibold text-emerald-600">55.9-62.7%</span>
+                    <a href="#ref-439" class="citation">439</a>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>XGBoost (stacked)</span>
+                    <span class="font-semibold text-emerald-600">61-67%</span>
+                    <a href="#ref-97" class="citation">97</a>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Neural Network (MLP)</span>
+                    <span class="font-semibold text-emerald-600">86.7%</span>
+                    <a href="#ref-246" class="citation">246</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-6 mb-8">
+              <h4 class="text-lg font-semibold text-slate-800 mb-4">Probability Calibration for Betting Edge</h4>
+              <p class="text-slate-700 mb-4">
+                Probability calibration represents the critical bridge between model outputs and actionable betting decisions.
+                The GAP (Goals, Attempts, Possession) framework developed at LSE explicitly incorporates odds-implied
+                probabilities as features, enabling direct comparison between model forecasts and market expectations.
+              </p>
+              <p class="text-slate-700">
+                This architecture demonstrated <strong>sustained profitability over 12-year backtesting</strong>,
+                with average returns of <strong>0.8% per bet</strong> when employing maximum available odds.
+                <a href="#ref-520" class="citation">520</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Score and Goal Predictions -->
+          <div id="score-goals" class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">1.2 Score and Goal Predictions</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Exact Scoreline Forecasting</h4>
+                <p class="text-slate-700 mb-4">
+                  Exact score prediction represents the most granular forecasting objective, with 16-25 common scorelines
+                  accounting for majority outcomes. The Betfair tutorial advocates separate regression models for home and away goals,
+                  with joint distribution reconstruction through independence assumption or copula-based dependence modeling.
+                  <a href="#ref-72" class="citation">72</a>
+                </p>
+                <div class="bg-emerald-50 rounded-lg p-4">
+                  <p class="text-sm text-emerald-800">
+                    <strong>Poisson regression</strong> provides theoretical foundation with count-data support, yet empirical
+                    goal distributions exhibit overdispersion that negative binomial or zero-inflated specifications better accommodate.
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Over/Under 2.5 Goals Market</h4>
+                <p class="text-slate-700 mb-4">
+                  The over/under 2.5 goals market commands particular attention due to exceptional liquidity and extensive historical data.
+                  The LSE GAP research specifically targeted this market, demonstrating that incorporating shot and corner statistics
+                  alongside goals improved predictive performance over goal-only approaches.
+                </p>
+                <div class="grid grid-cols-2 gap-4 text-sm text-slate-600">
+                  <div>
+                    <strong>Bundesliga:</strong> 2.9 avg goals, ~55% over 2.5
+                    <a href="#ref-261" class="citation">261</a>
+                  </div>
+                  <div>
+                    <strong>Serie A:</strong> 2.5 avg goals, ~47% over 2.5
+                    <a href="#ref-282" class="citation">282</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-slate-800 mb-4">Both Teams to Score (BTTS) Probability</h4>
+              <p class="text-slate-700 mb-4">
+                The BTTS market offers attractive properties: binary outcomes, moderate baseline rates (50-55%),
+                and substantial liquidity. Prediction requires joint estimation of each team&#39;s scoring probability
+                against specific opposition, with positive correlation in open, attacking matches raising BTTS probability
+                above independence predictions.
+              </p>
+              <div class="insight-highlight">
+                <p class="text-slate-700">
+                  <strong>PerformanceOdds research</strong> indicates first-half BTTS rates exceed <strong>70%</strong>
+                  when both teams demonstrate strong first-half performance indicators, suggesting in-play modeling improvements.
+                  <a href="#ref-382" class="citation">382</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Set-Piece and Discipline Markets -->
+          <div id="set-piece" class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">1.3 Set-Piece and Discipline Markets</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Total Corners Prediction</h4>
+                <p class="text-slate-700 mb-4">
+                  Corner prediction has emerged as a particularly promising niche market due to lower bookmaker attention
+                  and strong statistical regularity. The <code>futbol_corners_forecast</code> project achieves
+                  <strong>MAE &lt; 2.0 corners per match</strong>—approximately 15-25% relative error on typical totals (9-11 corners). </p>
+                    <div class="bg-emerald-50 rounded-lg p-4 mb-4">
+                      <h5 class="font-semibold text-emerald-800 mb-2">Top Feature Importances</h5>
+                      <div class="space-y-1 text-sm text-emerald-700">
+                        <div>Home team avg corners at home: <strong>0.0842</strong></div>
+                        <div>Away team avg corners away: <strong>0.0795</strong></div>
+                        <div>Home team xG: <strong>0.0623</strong></div>
+                        <div>Head-to-head avg corners: <strong>0.0581</strong></div>
+                      </div>
+                      <a href="#ref-500" class="citation">500</a>
+                    </div>
+                    <p class="text-sm text-slate-600">
+                      Home advantage manifests strongly—home teams typically earn <strong>55-60% of match corners</strong>.
+                      <a href="#ref-268" class="citation">268</a>
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg border border-slate-200 p-6">
+                  <h4 class="text-lg font-semibold text-slate-800 mb-4">Card Forecasting</h4>
+                  <p class="text-slate-700 mb-4">
+                    Card prediction presents distinct challenges: discretionary referee decisions and low base rates
+                    (3-4 yellows, 0.2 reds per match) create high variance. Research documents referee-specific
+                    card rates varying by factor of two.
+                  </p>
+                  <div class="bg-red-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-red-800 mb-2">Referee Variability</h5>
+                    <p class="text-sm text-red-700">
+                      Some officials average <strong>4+ yellows per match</strong> while others issue fewer than 3,
+                      creating predictable variation that models can exploit.
+                      <a href="#ref-547" class="citation">547</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Aggression-to-Control Ratio (ACR)</h4>
+                <p class="text-slate-700 mb-4">
+                  The ACR metric distinguishes structured dominance from reactive chaos, with elevated card risk in high-ACR matches.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                  <div class="bg-green-50 rounded-lg p-4">
+                    <div class="font-semibold text-green-800">Structured Dominance</div>
+                    <div class="text-sm text-green-700">ACR &lt; 15</div>
+                        <div class="text-xs text-green-600">Example: Man City 8.0</div>
+                    </div>
+                    <div class="bg-orange-50 rounded-lg p-4">
+                      <div class="font-semibold text-orange-800">Reactive Chaos</div>
+                      <div class="text-sm text-orange-700">ACR &gt; 25</div>
+                      <div class="text-xs text-orange-600">Example: Getafe 31.6</div>
+                    </div>
+                  </div>
+                  <p class="text-sm text-slate-600">
+                    <a href="#ref-382" class="citation">382</a>
+                    <a href="#ref-516" class="citation">516</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Data Infrastructure -->
+      <section id="data-infrastructure" class="px-8 py-16 bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif text-slate-800 mb-12">2. European Data Infrastructure and Free API Ecosystem</h2>
+
+          <!-- Primary Sources -->
+          <div id="primary-sources" class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">2.1 Primary Historical Data Sources</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              <div class="lg:col-span-2">
+                <h4 class="text-xl font-semibold text-slate-800 mb-4">Football-Data.co.uk: Comprehensive Historical Repository</h4>
+                <p class="text-slate-700 mb-6">
+                  Football-Data.co.uk stands as the preeminent free resource for European football prediction modeling,
+                  offering <strong>31 seasons of results data, 26 seasons of betting odds, and 26 seasons of match statistics</strong>
+                  spanning 22 league divisions. The dataset&#39;s temporal depth enables robust model training across multiple tactical eras.
+                </p>
+
+                <div class="bg-white rounded-lg border border-slate-200 p-4 mb-6">
+                  <h5 class="font-semibold text-slate-800 mb-3">Data Coverage Structure</h5>
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong>Match results:</strong> 1993/94+
+                      <br/>
+                      <strong>Betting odds:</strong> 2000/01+
+                      <br/>
+                      <strong>Statistics:</strong> 2000/01+
+                    </div>
+                    <div>
+                      <strong>Key Variables:</strong> FTHG/FTAG, HS/AS, HC/AC, HY/AY, HR/AR
+                      <br/>
+                      <strong>Format:</strong> CSV, consistent naming convention
+                    </div>
+                  </div>
+                  <a href="#ref-310" class="citation">310</a>
+                  <a href="#ref-375" class="citation">375</a>
+                </div>
+
+                <div class="insight-highlight">
+                  <p class="text-slate-700">
+                    <strong>Critical data quality note:</strong> Pinnacle&#39;s public API became unreliable from July 2025,
+                    with systematically outdated odds that should be excluded from betting analyses. This highlights the
+                    importance of multi-source validation and ongoing data quality monitoring.
+                    <a href="#ref-310" class="citation">310</a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h5 class="font-semibold text-slate-800 mb-4">Advanced Metrics via soccerdata</h5>
+                <p class="text-sm text-slate-600 mb-4">
+                  The soccerdata Python library provides programmatic access to FBref.com&#39;s extensive statistics,
+                  abstracting web scraping complexity into clean API interfaces.
+                </p>
+                <div class="space-y-2 text-sm text-slate-600">
+                  <div><strong>Expected goals (xG)</strong> - Shot quality metrics</div>
+                  <div><strong>Possession chains</strong> - Sequence analysis</div>
+                  <div><strong>Defensive actions</strong> - Pressure, tackles, interceptions</div>
+                  <div><strong>Progressive actions</strong> - Territorial dominance</div>
+                </div>
+                <a href="#ref-376" class="citation">376</a>
+                <a href="#ref-409" class="citation">409</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live APIs -->
+          <div id="live-apis" class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">2.2 Live and Fixture Data APIs</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Sportmonks API: Tiered Service Structure</h4>
+                <p class="text-slate-700 mb-4">
+                  Sportmonks offers genuinely free tier with 180 requests/hour covering Danish Superliga and Scottish Premiership,
+                  with European Plan (€39/month) providing 3,000 calls/hour for 27 major competitions.
+                </p>
+
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between items-center p-3 bg-green-50 rounded">
+                    <span><strong>Free Tier</strong></span>
+                    <span class="text-green-700">€0 - 2 leagues</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-blue-50 rounded">
+                    <span><strong>European Plan</strong></span>
+                    <span class="text-blue-700">€39/mo - 27 leagues</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-purple-50 rounded">
+                    <span><strong>Worldwide Plan</strong></span>
+                    <span class="text-purple-700">€129/mo - 140+ leagues</span>
+                  </div>
+                </div>
+                <a href="#ref-385" class="citation">385</a>
+                <a href="#ref-489" class="citation">489</a>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">The Odds API: Market Validation</h4>
+                <p class="text-slate-700 mb-4">
+                  The Odds API aggregates betting odds from 40+ bookmakers across 70+ sports, with soccer coverage
+                  including moneyline (1X2), totals, and spreads. Free tier supports development; paid tiers scale to production volumes.
+                </p>
+                <div class="bg-emerald-50 rounded-lg p-4">
+                  <h5 class="font-semibold text-emerald-800 mb-2">Primary Value</h5>
+                  <ul class="text-sm text-emerald-700 space-y-1">
+                    <li>Real-time edge identification</li>
+                    <li>Historical odds for backtesting</li>
+                    <li>Best-price selection across bookmakers</li>
+                    <li>Market key system for precise specification</li>
+                  </ul>
+                </div>
+                <a href="#ref-334" class="citation">334</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Quality -->
+          <div id="data-quality" class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">2.3 Data Quality and Coverage Considerations</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Big Five European Leagues Priority</h4>
+                <p class="text-slate-700 mb-4">
+                  The &#34;Big Five&#34; European leagues command priority attention due to optimal combination of data quality,
+                  market liquidity, and model applicability.
+                </p>
+
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between">
+                    <span><strong>Premier League</strong></span>
+                    <span class="text-slate-600">Exceptional data, highest liquidity</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span><strong>La Liga</strong></span>
+                    <span class="text-slate-600">Excellent coverage, very high liquidity</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span><strong>Bundesliga</strong></span>
+                    <span class="text-slate-600">Excellent coverage, high goal rates</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span><strong>Serie A</strong></span>
+                    <span class="text-slate-600">Excellent coverage, tactical focus</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span><strong>Ligue 1</strong></span>
+                    <span class="text-slate-600">Very good coverage, moderate liquidity</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Training Data Requirements</h4>
+                <p class="text-slate-700 mb-4">
+                  Machine learning model performance scales with training data volume, with diminishing returns beyond 10 seasons
+                  for stable league structures.
+                </p>
+
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h5 class="font-semibold text-blue-800 mb-2">Recommended Minimums</h5>
+                  <div class="space-y-2 text-sm text-blue-700">
+                    <div><strong>5 seasons:</strong> ~1,900 matches - Production deployment minimum</div>
+                    <div><strong>10 seasons:</strong> ~3,800 matches - Complex models, robust validation</div>
+                    <div><strong>20+ seasons:</strong> ~7,600+ matches - Long-term trend analysis</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 text-sm text-slate-600">
+                  <strong>Note:</strong> Seasonal effects necessitate recency weighting or explicit temporal modeling.
+                  <a href="#ref-520" class="citation">520</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ML Architecture -->
+      <section id="ml-architecture" class="px-8 py-16">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif text-slate-800 mb-12">3. Advanced Machine Learning Architecture</h2>
+
+          <!-- Gradient Boosting -->
+          <div id="gradient-boosting" class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">3.1 Gradient Boosting Frameworks</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              <div class="lg:col-span-2">
+                <h4 class="text-xl font-semibold text-slate-800 mb-4">XGBoost: Corners Prediction Excellence</h4>
+                <p class="text-slate-700 mb-6">
+                  XGBoost has emerged as the dominant algorithm for structured football prediction tasks, with the
+                  <code>futbol_corners_forecast</code> project achieving <strong>MAE of 1.93 corners</strong>—substantially
+                  below naive baselines and approaching practical betting utility.
+                </p>
+
+                <div class="bg-emerald-50 rounded-lg p-6 mb-6">
+                  <h5 class="font-semibold text-emerald-800 mb-3">Documented Performance</h5>
+                  <div class="grid grid-cols-2 gap-4 text-sm text-emerald-700">
+                    <div>
+                      <strong>Test MAE:</strong> 1.93 corners
+                      <br/>
+                      <strong>R²:</strong> 0.39
+                      <br/>
+                      <strong>Within ±1 corner:</strong> 46%
+                    </div>
+                    <div>
+                      <strong>Within ±2 corners:</strong> 68%
+                      <br/>
+                      <strong>Within ±3 corners:</strong> 82%
+                      <br/>
+                      <strong>Optimal conditions:</strong> MAE ~1.9
+                    </div>
+                  </div>
+                  <a href="#ref-500" class="citation">500</a>
+                  <a href="#ref-537" class="citation">537</a>
+                </div>
+
+                <div class="insight-highlight">
+                  <p class="text-slate-700">
+                    <strong>Performance variation:</strong> Optimal for consistent teams in mid-season fixtures (MAE ~1.9)
+                    versus challenging scenarios for inconsistent teams or early-season matches (MAE ~2.3),
+                    suggesting value in prediction confidence estimation.
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h5 class="font-semibold text-slate-800 mb-4">Framework Comparison</h5>
+                <div class="space-y-4 text-sm">
+                  <div class="border-l-4 border-blue-500 pl-3">
+                    <strong class="text-blue-700">XGBoost</strong>
+                    <div class="text-slate-600">Excellent accuracy, moderate speed</div>
+                  </div>
+                  <div class="border-l-4 border-green-500 pl-3">
+                    <strong class="text-green-700">LightGBM</strong>
+                    <div class="text-slate-600">10-20× faster, native categorical support
+                      <a href="#ref-564" class="citation">564</a>
+                    </div>
+                  </div>
+                  <div class="border-l-4 border-purple-500 pl-3">
+                    <strong class="text-purple-700">CatBoost</strong>
+                    <div class="text-slate-600">Ordered encoding, symmetric trees
+                      <a href="#ref-554" class="citation">554</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-slate-50 rounded-lg">
+                  <p class="text-xs text-slate-600">
+                    <strong>Research finding:</strong> LightGBM achieved 85.67% accuracy with substantially faster training.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Neural Networks -->
+          <div id="neural-networks" class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">3.2 Neural Network Approaches</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Multilayer Perceptrons (MLP)</h4>
+                <p class="text-slate-700 mb-4">
+                  Multilayer perceptrons provide flexible function approximation with demonstrated <strong>86.7% accuracy</strong>
+                  on FIFA World Cup match outcome prediction using 22 technical statistics indicators across five thematic dimensions.
+                </p>
+
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h5 class="font-semibold text-blue-800 mb-2">Architecture: 24-4-3</h5>
+                  <ul class="text-sm text-blue-700 space-y-1">
+                    <li><strong>Input:</strong> 24 features (after PCA)</li>
+                    <li><strong>Hidden:</strong> 4 units (sufficient capacity)</li>
+                    <li><strong>Output:</strong> 3 classes (softmax)</li>
+                    <li><strong>Regularization:</strong> Staged training, early stopping</li>
+                  </ul>
+                </div>
+                <a href="#ref-246" class="citation">246</a>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Sequence Modeling Architectures</h4>
+                <p class="text-slate-700 mb-4">
+                  Transformer architectures offer theoretical advantages for sequence modeling of match event histories,
+                  with self-attention capturing long-range dependencies in team form trajectories.
+                </p>
+
+                <div class="space-y-3">
+                  <div class="bg-orange-50 rounded-lg p-3">
+                    <strong class="text-orange-800">Transformers</strong>
+                    <div class="text-sm text-orange-700">Theoretical advantages, limited empirical applications</div>
+                  </div>
+                  <div class="bg-green-50 rounded-lg p-3">
+                    <strong class="text-green-800">RNNs (LSTM/GRU)</strong>
+                    <div class="text-sm text-green-700">Explicit temporal modeling, practical challenges
+                      <a href="#ref-568" class="citation">568</a>
+                    </div>
+                  </div>
+                  <div class="bg-purple-50 rounded-lg p-3">
+                    <strong class="text-purple-800">Hybrid Approaches</strong>
+                    <div class="text-sm text-purple-700">Most promising research direction</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ensembles -->
+          <div id="ensembles" class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">3.3 Ensemble and Stacked Models</h3>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-6">Meta-Learner Integration Architecture</h4>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <p class="text-slate-700 mb-6">
+                    Stacked ensembles combine multiple base learners through meta-learner optimization,
+                    capturing complementary strengths of diverse algorithms. Research found ensemble methods
+                    combining Random Forest and SVM achieved superior performance to individual algorithms.
+                    <a href="#ref-564" class="citation">564</a>
+                  </p>
+
+                  <div class="bg-emerald-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-emerald-800 mb-2">SoccerPredictor Implementation</h5>
+                    <ul class="text-sm text-emerald-700 space-y-1">
+                      <li><strong>Base Models:</strong> XGBoost, CatBoost, LightGBM, Neural Network</li>
+                      <li><strong>Meta-Learner:</strong> Ridge regression (goals), Logistic regression (outcome)</li>
+                      <li><strong>Validation:</strong> Out-of-fold predictions preventing information leakage</li>
+                    </ul>
+                    <a href="#ref-459" class="citation">459</a>
+                  </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-lg p-6">
+                  <h5 class="font-semibold text-slate-800 mb-4">Multi-Target Architecture</h5>
+                  <div class="space-y-3 text-sm">
+                    <div class="flex items-center justify-between p-2 bg-white rounded border">
+                      <span><strong>Corners</strong></span>
+                      <span class="text-blue-600">XGBoost regression</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2 bg-white rounded border">
+                      <span><strong>Goals (H/A)</strong></span>
+                      <span class="text-green-600">XGBoost regression</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2 bg-white rounded border">
+                      <span><strong>Cards</strong></span>
+                      <span class="text-orange-600">XGBoost regression</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2 bg-white rounded border">
+                      <span><strong>Outcome</strong></span>
+                      <span class="text-purple-600">XGBoost classifier</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2 bg-white rounded border">
+                      <span><strong>BTTS</strong></span>
+                      <span class="text-red-600">XGBoost classifier</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="insight-highlight">
+                <p class="text-slate-700">
+                  <strong>Joint loss optimization</strong> for correlated markets (goals and corners often positively correlated)
+                  ensures coherent cross-market predictions through shared representations and joint loss functions,
+                  though implementation complexity increases substantially.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Feature Engineering -->
+      <section id="feature-engineering" class="px-8 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif text-slate-800 mb-12">4. Feature Engineering for Multi-Market Prediction</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="bg-slate-50 rounded-lg p-6">
+              <h3 class="text-xl font-semibold text-slate-800 mb-6">
+                <i class="fas fa-chart-bar text-emerald-600 mr-2"></i>
+                Team Performance Metrics
+              </h3>
+
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-semibold text-slate-800 mb-2">Rolling Averages</h4>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Window length selection involves bias-variance tradeoffs. The futbol_corners_forecast project
+                    employs &#34;last 5 home&#34; and &#34;last 5 away&#34; specific averages, recognizing substantial venue effects.
+                  </p>
+                  <div class="bg-blue-50 rounded p-3 text-sm">
+                    <strong class="text-blue-800">Expected goals (xG)</strong> rolling averages substantially
+                    outperform raw goals due to superior signal-to-noise ratio.
+                    <a href="#ref-500" class="citation">500</a>
+                    <a href="#ref-537" class="citation">537</a>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-slate-800 mb-2">Home/Away Split Performance</h4>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Home advantage persists remarkably (~0.3-0.5 expected goals differential) with substantial
+                    team-specific variation that models must capture.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-slate-800 mb-2">Head-to-Head Records</h4>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Head-to-head average corners feature importance at <strong>0.0581</strong>—fourth-highest
+                    among all features—demonstrating genuine incremental information.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-lg p-6">
+              <h3 class="text-xl font-semibold text-slate-800 mb-6">
+                <i class="fas fa-cogs text-emerald-600 mr-2"></i>
+                Match Context &amp; Situational Factors
+              </h3>
+
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-semibold text-slate-800 mb-2">Seasonal Objectives</h4>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Team motivation varies dramatically based on league position and seasonal objectives,
+                    creating predictable patterns in match outcomes and statistics.
+                  </p>
+                  <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-red-50 p-2 rounded">Title race → Attack priority</div>
+                    <div class="bg-orange-50 p-2 rounded">Relegation battle → Defensive desperation</div>
+                    <div class="bg-green-50 p-2 rounded">European qualification → Balanced approach</div>
+                    <div class="bg-blue-50 p-2 rounded">Mid-table security → Reduced intensity</div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-slate-800 mb-2">Fixture Congestion</h4>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Physical and tactical constraints from multiple competitions require modeling of
+                    recovery periods, travel distance, and rotation likelihood.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-slate-800 mb-2">Referee Assignment</h4>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Referee characteristics carry substantial predictive signal, with baseline card rates
+                    varying from 2.5-5.0 yellows per match and persistent tendencies over time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg border border-slate-200 p-8">
+            <h3 class="text-xl font-semibold text-slate-800 mb-6">
+              <i class="fas fa-analytics text-emerald-600 mr-2"></i>
+              Alternative Performance Indicators (GAP Statistics)
+            </h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="bg-blue-50 rounded-lg p-6">
+                <h4 class="font-semibold text-blue-800 mb-3">Shots &amp; Shot Quality</h4>
+                <p class="text-sm text-blue-700 mb-3">
+                  The GAP framework demonstrates that shot-based metrics improve over/under prediction versus goal-only approaches.
+                </p>
+                <div class="text-xs text-blue-600">
+                  <strong>ST + C combination:</strong> Best performing input in many leagues
+                  <a href="#ref-520" class="citation">520</a>
+                </div>
+              </div>
+
+              <div class="bg-green-50 rounded-lg p-6">
+                <h4 class="font-semibold text-green-800 mb-3">Possession &amp; Dominance</h4>
+                <p class="text-sm text-green-700 mb-3">
+                  Possession and territorial metrics predict corner generation through sustained attacking pressure.
+                </p>
+                <div class="text-xs text-green-600">
+                  <strong>Key metrics:</strong> Final third entries, attacking third time, progressive passes
+                </div>
+              </div>
+
+              <div class="bg-red-50 rounded-lg p-6">
+                <h4 class="font-semibold text-red-800 mb-3">Fouls &amp; Aggression</h4>
+                <p class="text-sm text-red-700 mb-3">
+                  Foul frequency provides primary predictor for cards, with card rate per foul varying by context and referee tendencies.
+                </p>
+                <div class="text-xs text-red-600">
+                  <strong>ACR metric:</strong> Fouls / Possession % × 100 distinguishes playing styles
+                  <a href="#ref-382" class="citation">382</a>
+                  <a href="#ref-516" class="citation">516</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Implementation -->
+      <section id="implementation" class="px-8 py-16 bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif text-slate-800 mb-12">5. Model Implementation and Deployment Patterns</h2>
+
+          <!-- Reference Implementation -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">5.1 Reference Implementation: Corners Prediction Model</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-code text-emerald-600 mr-2"></i>
+                  Architecture &amp; Technology Stack
+                </h4>
+
+                <div class="space-y-4">
+                  <div class="bg-blue-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-blue-800 mb-2">Data Ingestion</h5>
+                    <p class="text-sm text-blue-700">soccerdata library with automated collection via GitHub Actions</p>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-green-800 mb-2">Model Training</h5>
+                    <p class="text-sm text-green-700">XGBoost regression with MLflow tracking and hyperparameter optimization</p>
+                  </div>
+
+                  <div class="bg-purple-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-purple-800 mb-2">Deployment</h5>
+                    <p class="text-sm text-purple-700">FastAPI endpoint on Hugging Face Spaces with Streamlit interface</p>
+                  </div>
+                </div>
+                <a href="#ref-537" class="citation">537</a>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-chart-line text-emerald-600 mr-2"></i>
+                  Performance Benchmarks
+                </h4>
+
+                <div class="space-y-4">
+                  <div class="text-center">
+                    <div class="text-3xl font-bold text-emerald-600 mb-1">1.93</div>
+                    <div class="text-sm text-slate-600">Test MAE (corners)</div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-3 text-center">
+                    <div class="bg-emerald-50 rounded p-3">
+                      <div class="font-bold text-emerald-600">46%</div>
+                      <div class="text-xs text-emerald-700">Within ±1</div>
+                    </div>
+                    <div class="bg-blue-50 rounded p-3">
+                      <div class="font-bold text-blue-600">68%</div>
+                      <div class="text-xs text-blue-700">Within ±2</div>
+                    </div>
+                    <div class="bg-purple-50 rounded p-3">
+                      <div class="font-bold text-purple-600">82%</div>
+                      <div class="text-xs text-purple-700">Within ±3</div>
+                    </div>
+                  </div>
+
+                  <div class="bg-orange-50 rounded-lg p-3">
+                    <p class="text-sm text-orange-700">
+                      <strong>Performance variation:</strong> Optimal for consistent teams in mid-season fixtures (MAE ~1.9)
+                      versus challenging scenarios for inconsistent teams (MAE ~2.3)
+                    </p>
+                  </div>
+                </div>
+                <a href="#ref-500" class="citation">500</a>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-6">Deployment Interfaces</h4>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-blue-50 rounded-lg p-6">
+                  <h5 class="font-semibold text-blue-800 mb-3">
+                    <i class="fas fa-api text-blue-600 mr-2"></i>
+                    API Endpoint
+                  </h5>
+                  <div class="text-sm text-blue-700 mb-3">
+                    <code>https://huggingface.co/spaces/daniel-saed/futbol-corners-forecast-api</code>
+                  </div>
+                  <p class="text-sm text-blue-700 mb-3">
+                    Programmatic integration for betting automation with sub-second latency requirements
+                    and feature computation consistency.
+                  </p>
+                  <div class="text-xs text-blue-600">
+                    Use Cases: Automated betting systems, real-time prediction comparison
+                  </div>
+                </div>
+
+                <div class="bg-green-50 rounded-lg p-6">
+                  <h5 class="font-semibold text-green-800 mb-3">
+                    <i class="fas fa-desktop text-green-600 mr-2"></i>
+                    Web Application
+                  </h5>
+                  <div class="text-sm text-green-700 mb-3">
+                    <code>https://daniel-saed-corner-forecast.hf.space/</code>
+                  </div>
+                  <p class="text-sm text-green-700 mb-3">
+                    Manual analysis interface for validation, exploration, and monitoring
+                    with integrated visualization and prediction confidence indicators.
+                  </p>
+                  <div class="text-xs text-green-600">
+                    Use Cases: Manual analysis, model validation, confidence assessment
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Multi-Output Extension -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">5.2 Extension to Multi-Output Prediction</h3>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-8 mb-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-6">Specialized Sub-Models Architecture</h4>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="border-b border-slate-200">
+                      <th class="text-left py-3 px-4 font-semibold text-slate-800">Target</th>
+                      <th class="text-left py-3 px-4 font-semibold text-slate-800">Algorithm</th>
+                      <th class="text-left py-3 px-4 font-semibold text-slate-800">Loss Function</th>
+                      <th class="text-left py-3 px-4 font-semibold text-slate-800">Key Features</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100">
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-blue-700">Corners</td>
+                      <td class="py-3 px-4 text-slate-600">XGBoost regression</td>
+                      <td class="py-3 px-4 text-slate-600">Squared error</td>
+                      <td class="py-3 px-4 text-slate-600">Historical corners, xG, possession</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-green-700">Goals (H/A)</td>
+                      <td class="py-3 px-4 text-slate-600">XGBoost regression</td>
+                      <td class="py-3 px-4 text-slate-600">Poisson deviance</td>
+                      <td class="py-3 px-4 text-slate-600">xG, shot quality, tempo</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-orange-700">Cards</td>
+                      <td class="py-3 px-4 text-slate-600">XGBoost regression</td>
+                      <td class="py-3 px-4 text-slate-600">Poisson deviance</td>
+                      <td class="py-3 px-4 text-slate-600">Fouls, referee, aggression metrics</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-purple-700">Outcome</td>
+                      <td class="py-3 px-4 text-slate-600">XGBoost classifier</td>
+                      <td class="py-3 px-4 text-slate-600">Log-loss</td>
+                      <td class="py-3 px-4 text-slate-600">Form, quality, context features</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-red-700">BTTS</td>
+                      <td class="py-3 px-4 text-slate-600">XGBoost classifier</td>
+                      <td class="py-3 px-4 text-slate-600">Log-loss</td>
+                      <td class="py-3 px-4 text-slate-600">Offensive quality, defensive vulnerability</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h5 class="font-semibold text-blue-800 mb-2">Advantages</h5>
+                  <ul class="text-sm text-blue-700 space-y-1">
+                    <li>Simplicity and independent optimization</li>
+                    <li>Failure isolation between targets</li>
+                    <li>Target-specific hyperparameter tuning</li>
+                  </ul>
+                </div>
+                <div class="bg-orange-50 rounded-lg p-4">
+                  <h5 class="font-semibold text-orange-800 mb-2">Disadvantages</h5>
+                  <ul class="text-sm text-orange-700 space-y-1">
+                    <li>Ignores inter-target correlations</li>
+                    <li>Redundant computation across models</li>
+                    <li>Potential prediction inconsistencies</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Shared Feature Extraction Backbone</h4>
+                <p class="text-slate-700 mb-4">
+                  More sophisticated architecture with shared preprocessing and base feature computation,
+                  feeding task-specific heads with fine-tuning capabilities.
+                </p>
+
+                <div class="bg-green-50 rounded-lg p-4 mb-4">
+                  <h5 class="font-semibold text-green-800 mb-2">Multi-Task Learning Benefits</h5>
+                  <ul class="text-sm text-green-700 space-y-1">
+                    <li>Statistical efficiency through representation sharing</li>
+                    <li>Improved generalization across related tasks</li>
+                    <li>Coherent cross-market predictions</li>
+                    <li>Reduced computational redundancy</li>
+                  </ul>
+                </div>
+
+                <p class="text-sm text-slate-600">
+                  Implementation involves gradient boosting or neural network layers processing raw statistics
+                  into rich representation space, with target-specific heads applying selective feature attention.
+                </p>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Joint Loss Optimization</h4>
+                <p class="text-slate-700 mb-4">
+                  Explicit correlation modeling between related targets through joint loss construction
+                  and covariance regularization.
+                </p>
+
+                <div class="space-y-3 mb-4">
+                  <div class="bg-blue-50 rounded p-3">
+                    <strong class="text-blue-800">Goals ↔ Corners</strong>
+                    <div class="text-sm text-blue-700">Positive correlation (0.3-0.4) via shared attacking pressure</div>
+                  </div>
+                  <div class="bg-red-50 rounded p-3">
+                    <strong class="text-red-800">Goals ↔ Cards</strong>
+                    <div class="text-sm text-red-700">Context-dependent (open vs. tactical matches)</div>
+                  </div>
+                  <div class="bg-green-50 rounded p-3">
+                    <strong class="text-green-800">Corners ↔ Cards</strong>
+                    <div class="text-sm text-green-700">Weak correlation, near-independent</div>
+                  </div>
+                </div>
+
+                <p class="text-sm text-slate-600">
+                  Joint loss penalizes predictions violating plausible joint distributions (e.g., 0-0 scoreline with 15 corners),
+                  with covariance estimation from historical residuals for portfolio optimization.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Commercial Alternative -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">5.3 Commercial Alternative: Sportsprediction.ai COPA</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-check-circle text-emerald-600 mr-2"></i>
+                  Comprehensive Coverage
+                </h4>
+
+                <div class="space-y-4 mb-6">
+                  <div class="bg-blue-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-blue-800 mb-2">Market Coverage</h5>
+                    <ul class="text-sm text-blue-700 space-y-1">
+                      <li>Match outcome (1X2 probabilities)</li>
+                      <li>Goals (totals, team totals, multiple thresholds)</li>
+                      <li>Corners (team-specific, aggregate)</li>
+                      <li>Cards (total, team, player-specific)</li>
+                      <li>Player events (goals, assists, cards)</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-green-800 mb-2">User Base</h5>
+                    <p class="text-sm text-green-700">
+                      <strong>128,000+ users</strong> indicates substantial market validation
+                      and commercial viability for consumer-oriented prediction services.
+                    </p>
+                  </div>
+                </div>
+
+                <a href="#ref-388" class="citation">388</a>
+                <a href="#ref-406" class="citation">406</a>
+                <a href="#ref-394" class="citation">394</a>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-exclamation-triangle text-orange-600 mr-2"></i>
+                  Operational Limitations
+                </h4>
+
+                <div class="space-y-4">
+                  <div class="bg-red-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-red-800 mb-2">Platform Constraints</h5>
+                    <ul class="text-sm text-red-700 space-y-1">
+                      <li>No programmatic API access</li>
+                      <li>Mobile-app only interface</li>
+                      <li>Black-box methodology</li>
+                      <li>Subscription-based pricing model</li>
+                      <li>Limited customization capabilities</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-yellow-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-yellow-800 mb-2">Strategic Positioning</h5>
+                    <p class="text-sm text-yellow-700">
+                      Consumer-oriented product rather than professional trading infrastructure.
+                      Best suited for validation benchmarking and market coverage guidance rather than
+                      production deployment for serious betting operations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Profitability &amp; Strategy -->
+      <section id="profitability" class="px-8 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif text-slate-800 mb-12">6. Profitability and Betting Strategy Integration</h2>
+
+          <!-- Edge Detection -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">6.1 Edge Detection and Value Betting</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-slate-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Probability-to-Odds Comparison</h4>
+                <p class="text-slate-700 mb-4">
+                  The fundamental betting operation calculates Expected Value: <strong>EV = p × o - 1</strong>,
+                  where positive EV requires <strong>p &gt; 1/o</strong>. The margin of edge determines stake sizing
+                  through Kelly criterion variants.
+                </p>
+
+                <div class="bg-emerald-50 rounded-lg p-4 mb-4">
+                  <h5 class="font-semibold text-emerald-800 mb-2">Value Betting Example</h5>
+                  <div class="grid grid-cols-3 gap-2 text-sm text-emerald-700">
+                    <div>
+                      <strong>Model Probability</strong>
+                      <br/>45%
+                    </div>
+                    <div>
+                      <strong>Market Odds</strong>
+                      <br/>2.50 (40% implied)
+                    </div>
+                    <div>
+                      <strong>Edge &amp; EV</strong>
+                      <br/>+5pp, +12.5%
+                    </div>
+                  </div>
+                </div>
+
+                <p class="text-sm text-slate-600">
+                  Market efficiency varies: major league 1X2 markets are highly efficient (small edges),
+                  while secondary markets like corners show greater inefficiency (10-20% edges achievable).
+                  <a href="#ref-268" class="citation">268</a>
+                </p>
+              </div>
+
+              <div class="bg-slate-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Kelly Criterion &amp; Stake Sizing</h4>
+                <p class="text-slate-700 mb-4">
+                  Kelly criterion formula: <strong>f = (bp - q) / b</strong>, where b = odds - 1, p = win probability,
+                  q = 1 - p. Fractional Kelly addresses probability estimation uncertainty.
+                </p>
+
+                <div class="space-y-3">
+                  <div class="bg-red-50 rounded p-3">
+                    <strong class="text-red-800">Full Kelly</strong>
+                    <div class="text-sm text-red-700">Extremely aggressive, high variance</div>
+                  </div>
+                  <div class="bg-orange-50 rounded p-3">
+                    <strong class="text-orange-800">Half Kelly (0.5×)</strong>
+                    <div class="text-sm text-orange-700">Practical standard, moderate variance</div>
+                  </div>
+                  <div class="bg-green-50 rounded p-3">
+                    <strong class="text-green-800">Quarter Kelly (0.25×)</strong>
+                    <div class="text-sm text-green-700">Conservative, low variance approach</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-6">Market-Specific Overround Analysis</h4>
+
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-green-50 rounded-lg p-6">
+                  <h5 class="font-semibold text-green-800 mb-3">
+                    <i class="fas fa-exchange-alt text-green-600 mr-2"></i>
+                    Exchanges (Betfair)
+                  </h5>
+                  <div class="text-2xl font-bold text-green-600 mb-2">2-3%</div>
+                  <div class="text-sm text-green-700 mb-3">+ commission</div>
+                  <p class="text-sm text-green-700">
+                    Primary execution venue with highest limits and true market pricing
+                  </p>
+                </div>
+
+                <div class="bg-blue-50 rounded-lg p-6">
+                  <h5 class="font-semibold text-blue-800 mb-3">
+                    <i class="fas fa-chart-line text-blue-600 mr-2"></i>
+                    Sharp Bookmakers
+                  </h5>
+                  <div class="text-2xl font-bold text-blue-600 mb-2">2-4%</div>
+                  <div class="text-sm text-blue-700 mb-3">(Pinnacle)</div>
+                  <p class="text-sm text-blue-700">
+                    Benchmark pricing, but account limitations risk
+                  </p>
+                </div>
+
+                <div class="bg-orange-50 rounded-lg p-6">
+                  <h5 class="font-semibold text-orange-800 mb-3">
+                    <i class="fas fa-bullseye text-orange-600 mr-2"></i>
+                    Niche Markets
+                  </h5>
+                  <div class="text-2xl font-bold text-orange-600 mb-2">5-10%</div>
+                  <div class="text-sm text-orange-700 mb-3">Specialist knowledge advantage</div>
+                  <p class="text-sm text-orange-700">
+                    Greater pricing errors but liquidity constraints
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-6 text-center">
+                <p class="text-sm text-slate-600">
+                  The Odds API enables systematic best-price identification across 40+ bookmakers,
+                  substantially improving realized returns. <a href="#ref-334" class="citation">334</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Risk Management -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">6.2 Risk Management Framework</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-slate-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Bankroll Allocation Principles</h4>
+                <p class="text-slate-700 mb-4">
+                  Diversification across uncorrelated or negatively correlated markets reduces portfolio variance.
+                  Mean-variance optimization or Kelly extension to multiple simultaneous bets provides principled frameworks.
+                </p>
+
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center p-3 bg-white rounded border">
+                    <span><strong>Goals ↔ Corners</strong></span>
+                    <span class="text-orange-600">+0.3 to +0.4 correlation</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-white rounded border">
+                    <span><strong>Goals ↔ Cards</strong></span>
+                    <span class="text-blue-600">Context-dependent</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-white rounded border">
+                    <span><strong>Corners ↔ Cards</strong></span>
+                    <span class="text-green-600">Weak correlation</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-white rounded border">
+                    <span><strong>Different matches</strong></span>
+                    <span class="text-gray-600">~0 correlation</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-slate-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">Correlation-Aware Position Sizing</h4>
+                <p class="text-slate-700 mb-4">
+                  Explicit correlation modeling prevents hidden concentration risk through covariance estimation
+                  from historical prediction residuals.
+                </p>
+
+                <div class="bg-yellow-50 rounded-lg p-4 mb-4">
+                  <h5 class="font-semibold text-yellow-800 mb-2">Position Adjustment Example</h5>
+                  <p class="text-sm text-yellow-700">
+                    Over 2.5 goals + Over 9.5 corners: Reduce to 70-80% of full stake each
+                    due to positive correlation, maintaining proper risk exposure.
+                  </p>
+                </div>
+
+                <p class="text-sm text-slate-600">
+                  Optimal weighting depends on error correlation structure, with negatively correlated errors
+                  enabling risk reduction through diversification.
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-6">Drawdown Limits &amp; Abandonment Criteria</h4>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="border-b border-slate-200">
+                      <th class="text-left py-3 px-4 font-semibold text-slate-800">Criterion</th>
+                      <th class="text-left py-3 px-4 font-semibold text-slate-800">Threshold</th>
+                      <th class="text-left py-3 px-4 font-semibold text-slate-800">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100">
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-red-700">Daily loss limit</td>
+                      <td class="py-3 px-4 text-slate-600">5% of bankroll</td>
+                      <td class="py-3 px-4 text-slate-600">Suspend betting, review model</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-orange-700">Weekly loss limit</td>
+                      <td class="py-3 px-4 text-slate-600">10% of bankroll</td>
+                      <td class="py-3 px-4 text-slate-600">Intensive review, potential update</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-yellow-700">Monthly loss limit</td>
+                      <td class="py-3 px-4 text-slate-600">20% of bankroll</td>
+                      <td class="py-3 px-4 text-slate-600">Strategy suspension, reassessment</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-purple-700">Consecutive losses</td>
+                      <td class="py-3 px-4 text-slate-600">10+ at expected 55% win rate</td>
+                      <td class="py-3 px-4 text-slate-600">Statistical process control check</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-medium text-blue-700">CLV degradation</td>
+                      <td class="py-3 px-4 text-slate-600">Sustained negative CLV</td>
+                      <td class="py-3 px-4 text-slate-600">Model degradation signal, retraining</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="mt-6">
+                <p class="text-sm text-slate-600">
+                  Statistical process control involves tracking prediction accuracy and returns against historical distributions,
+                  with automatic alerts for deviations exceeding 95% confidence intervals.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Historical Validation -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">6.3 Historical Validation Results</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+              <div class="bg-emerald-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold text-emerald-800 mb-4">
+                  <i class="fas fa-trophy text-emerald-600 mr-2"></i>
+                  GAP-Based Over/Under Model
+                </h4>
+
+                <div class="space-y-4">
+                  <div class="text-center">
+                    <div class="text-3xl font-bold text-emerald-600 mb-1">0.8%</div>
+                    <div class="text-sm text-emerald-700">Average profit per bet</div>
+                  </div>
+
+                  <div class="space-y-2 text-sm text-emerald-700">
+                    <div><strong>Validation period:</strong> 12 years (2005-2017)</div>
+                    <div><strong>Dataset size:</strong> 54,437 matches</div>
+                    <div><strong>Leagues covered:</strong> 10 European leagues</div>
+                    <div><strong>Best input:</strong> Shots on target + Corners (ST+C)</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-white rounded-lg">
+                  <p class="text-xs text-emerald-700">
+                    <strong>Compounding implications:</strong> 0.8% edge × 1,000 bets/year × 1% average stake
+                    = <strong>8% annual return</strong>, exceeding most risk-adjusted benchmarks.
+                  </p>
+                </div>
+
+                <a href="#ref-50" class="citation">50</a>
+                <a href="#ref-520" class="citation">520</a>
+              </div>
+
+              <div class="bg-blue-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold text-blue-800 mb-4">
+                  <i class="fas fa-brain text-blue-600 mr-2"></i>
+                  Random Forest Outcome Models
+                </h4>
+
+                <div class="space-y-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-blue-600 mb-1">55.9-62.7%</div>
+                    <div class="text-sm text-blue-700">Validation accuracy range</div>
+                  </div>
+
+                  <div class="space-y-2 text-sm text-blue-700">
+                    <div><strong>Lower bound:</strong> 55.9% (diverse conditions)</div>
+                    <div><strong>Practical threshold:</strong> 59.55% (Premier League)</div>
+                    <div><strong>Upper bound:</strong> 62.7% (optimized features)</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-white rounded-lg">
+                  <p class="text-xs text-blue-700">
+                    <strong>Critical interpretation:</strong> Accuracy alone insufficient—calibration quality
+                    and odds comparison determine profitability.
+                  </p>
+                </div>
+
+                <a href="#ref-439" class="citation">439</a>
+                <a href="#ref-497" class="citation">497</a>
+                <a href="#ref-503" class="citation">503</a>
+              </div>
+
+              <div class="bg-purple-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold text-purple-800 mb-4">
+                  <i class="fas fa-chart-line text-purple-600 mr-2"></i>
+                  Corners Specialization
+                </h4>
+
+                <div class="space-y-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-purple-600 mb-1">MAE &lt; 2.0</div>
+                    <div class="text-sm text-purple-700">Sustained edge in niche market</div>
+                  </div>
+
+                  <div class="space-y-2 text-sm text-purple-700">
+                    <div><strong>Bookmaker attention:</strong> Lower, slower adjustment</div>
+                    <div><strong>Modeling competition:</strong> Limited, preserving edges</div>
+                    <div><strong>Information asymmetry:</strong> Substantial advantage</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-white rounded-lg">
+                  <p class="text-xs text-purple-700">
+                    <strong>Strategy:</strong> Develop superior models in neglected markets,
+                    accept liquidity constraints, compound edges through disciplined execution.
+                  </p>
+                </div>
+
+                <a href="#ref-268" class="citation">268</a>
+                <a href="#ref-500" class="citation">500</a>
+                <a href="#ref-537" class="citation">537</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Technical Roadmap -->
+      <section id="roadmap" class="px-8 py-16 bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif text-slate-800 mb-12">7. Technical Implementation Roadmap</h2>
+
+          <!-- Data Pipeline -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">7.1 Data Pipeline Construction</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-download text-blue-600 mr-2"></i>
+                  Automated Ingestion
+                </h4>
+
+                <div class="space-y-4">
+                  <div class="bg-blue-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-blue-800 mb-2">Football-Data.co.uk</h5>
+                    <p class="text-sm text-blue-700 mb-2">
+                      Daily post-match automated download with HTTP request and pandas parsing,
+                      including schema validation and file size monitoring.
+                    </p>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-green-800 mb-2">soccerdata FBref Access</h5>
+                    <p class="text-sm text-green-700 mb-2">
+                      Library API with intelligent caching, rate limit compliance, and error handling
+                      for advanced metrics collection.
+                    </p>
+                  </div>
+
+                  <div class="bg-purple-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-purple-800 mb-2">Quality Assurance</h5>
+                    <p class="text-sm text-purple-700 mb-2">
+                      Great Expectations or custom validation with missing value alerts,
+                      distribution drift detection, and feature freshness monitoring.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-slate-100 rounded-lg">
+                  <p class="text-xs text-slate-600">
+                    <strong>Schedule:</strong> Daily 6 AM UTC via GitHub Actions workflow with
+                    data_download → quality_validation → feature_computation → model_inference_update → notification pipeline
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-cogs text-orange-600 mr-2"></i>
+                  Feature Engineering Pipeline
+                </h4>
+
+                <div class="space-y-3">
+                  <div class="flex items-center p-3 bg-orange-50 rounded">
+                    <div class="w-3 h-3 bg-orange-500 rounded-full mr-3"></div>
+                    <div>
+                      <strong class="text-orange-800">Raw Data</strong>
+                      <div class="text-sm text-orange-700">Match results, statistics cleaning</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center p-3 bg-blue-50 rounded">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                    <div>
+                      <strong class="text-blue-800">Team Aggregation</strong>
+                      <div class="text-sm text-blue-700">Group by team, venue, time window</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center p-3 bg-green-50 rounded">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <div>
+                      <strong class="text-green-800">Rolling Computation</strong>
+                      <div class="text-sm text-green-700">Exponential weighting, window selection</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center p-3 bg-purple-50 rounded">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                    <div>
+                      <strong class="text-purple-800">Context Enrichment</strong>
+                      <div class="text-sm text-purple-700">League position, seasonal objectives</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center p-3 bg-red-50 rounded">
+                    <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                    <div>
+                      <strong class="text-red-800">Head-to-Head</strong>
+                      <div class="text-sm text-red-700">Historical matchup aggregation</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-slate-100 rounded-lg">
+                  <p class="text-xs text-slate-600">
+                    <strong>Critical requirements:</strong> Temporal integrity (no future information),
+                    consistent computation training/inference, versioning for reproducibility
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-6">Missing Data &amp; Outlier Handling</h4>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                  <h5 class="font-semibold text-slate-800 mb-3">Missingness Scenarios &amp; Strategies</h5>
+                  <div class="space-y-3 text-sm">
+                    <div class="bg-yellow-50 rounded p-3">
+                      <strong class="text-yellow-800">Early-season limited history</strong>
+                      <div class="text-yellow-700">League average + team prior with Bayesian shrinkage</div>
+                    </div>
+                    <div class="bg-orange-50 rounded p-3">
+                      <strong class="text-orange-800">Promoted teams</strong>
+                      <div class="text-orange-700">Relegated team average, league median, hierarchical modeling</div>
+                    </div>
+                    <div class="bg-red-50 rounded p-3">
+                      <strong class="text-red-800">Data collection gaps</strong>
+                      <div class="text-red-700">Interpolation with missingness flag and uncertainty quantification</div>
+                    </div>
+                    <div class="bg-blue-50 rounded p-3">
+                      <strong class="text-blue-800">Feature-specific missing</strong>
+                      <div class="text-blue-700">XGBoost native handling or separate imputation model</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h5 class="font-semibold text-slate-800 mb-3">Outlier Detection Methods</h5>
+                  <div class="space-y-3 text-sm">
+                    <div class="bg-purple-50 rounded p-3">
+                      <strong class="text-purple-800">Isolation forest</strong>
+                      <div class="text-purple-700">Unsupervised anomaly detection</div>
+                    </div>
+                    <div class="bg-green-50 rounded p-3">
+                      <strong class="text-green-800">Statistical thresholds</strong>
+                      <div class="text-green-700">Z-score, IQR-based detection</div>
+                    </div>
+                    <div class="bg-red-50 rounded p-3">
+                      <strong class="text-red-800">Domain rules</strong>
+                      <div class="text-red-700">Flag &gt;15 goals/corners for review</div>
+                    </div>
+                    <div class="bg-gray-50 rounded p-3">
+                      <strong class="text-gray-800">Ensemble methods</strong>
+                      <div class="text-gray-700">Multiple detection algorithms combined</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Model Training -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">7.2 Model Training and Validation</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-clock text-blue-600 mr-2"></i>
+                  Time-Series Cross-Validation
+                </h4>
+
+                <p class="text-slate-700 mb-4">
+                  Strict temporal order preservation with expanding window validation,
+                  preventing information leakage through proper chronological ordering.
+                </p>
+
+                <div class="space-y-3">
+                  <div class="bg-red-50 rounded-lg p-3">
+                    <h5 class="font-semibold text-red-800 mb-1">❌ Random k-fold</h5>
+                    <p class="text-sm text-red-700">Never for time series - catastrophic future information leakage</p>
+                  </div>
+
+                  <div class="bg-orange-50 rounded-lg p-3">
+                    <h5 class="font-semibold text-orange-800 mb-1">⚠️ Blocked k-fold</h5>
+                    <p class="text-sm text-orange-700">Season-based blocks - moderate risk, exploratory only</p>
+                  </div>
+
+                  <div class="bg-blue-50 rounded-lg p-3">
+                    <h5 class="font-semibold text-blue-800 mb-1">✅ Time-series CV</h5>
+                    <p class="text-sm text-blue-700">Expanding window - low risk, hyperparameter tuning</p>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-3">
+                    <h5 class="font-semibold text-green-800 mb-1">⭐ Walk-forward</h5>
+                    <p class="text-sm text-green-700">Production simulation - minimal risk, final validation</p>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-slate-100 rounded-lg">
+                  <p class="text-xs text-slate-600">
+                    <strong>Implementation:</strong> sklearn TimeSeriesSplit or custom expanding window
+                    with strict chronological ordering and out-of-fold base model predictions
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-search text-green-600 mr-2"></i>
+                  Hyperparameter Optimization
+                </h4>
+
+                <p class="text-slate-700 mb-4">
+                  Bayesian optimization with Optuna or genetic algorithms for efficient search
+                  in complex, non-convex hyperparameter spaces common in football prediction.
+                </p>
+
+                <div class="space-y-3 mb-4">
+                  <div class="flex justify-between items-center p-3 bg-red-50 rounded">
+                    <span><strong>Grid search</strong></span>
+                    <span class="text-red-700">Very high cost</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-yellow-50 rounded">
+                    <span><strong>Random search</strong></span>
+                    <span class="text-yellow-700">Moderate cost</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-green-50 rounded">
+                    <span><strong>Bayesian optimization</strong></span>
+                    <span class="text-green-700">Moderate cost, recommended</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-blue-50 rounded">
+                    <span><strong>Genetic algorithms</strong></span>
+                    <span class="text-blue-700">High cost, complex spaces</span>
+                  </div>
+                </div>
+
+                <div class="bg-emerald-50 rounded-lg p-4">
+                  <h5 class="font-semibold text-emerald-800 mb-2">Optimization Objectives</h5>
+                  <div class="space-y-1 text-sm text-emerald-700">
+                    <div><strong>Primary:</strong> MAE for regression, log-loss for classification</div>
+                    <div><strong>Secondary:</strong> Betting simulation validation for final selection</div>
+                    <div><strong>Constraints:</strong> Computational budget, training time limits</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-6">Complete Operational Backtesting</h4>
+
+              <p class="text-slate-700 mb-6">
+                Complete simulation including prediction generation, edge identification, stake sizing,
+                execution simulation, and performance tracking against historical closing odds with realistic assumptions.
+              </p>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h5 class="font-semibold text-slate-800 mb-3">Simulation Components</h5>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex items-center p-2 bg-blue-50 rounded">
+                      <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span><strong>Prediction generation:</strong> Model inference with temporal integrity</span>
+                    </div>
+                    <div class="flex items-center p-2 bg-green-50 rounded">
+                      <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                      <span><strong>Edge identification:</strong> Compare to closing odds with minimum threshold</span>
+                    </div>
+                    <div class="flex items-center p-2 bg-orange-50 rounded">
+                      <div class="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                      <span><strong>Stake sizing:</strong> Kelly or fractional Kelly with bankroll assumptions</span>
+                    </div>
+                    <div class="flex items-center p-2 bg-purple-50 rounded">
+                      <div class="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+                      <span><strong>Execution simulation:</strong> Assume closing odds with slippage adjustment</span>
+                    </div>
+                    <div class="flex items-center p-2 bg-red-50 rounded">
+                      <div class="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                      <span><strong>Performance tracking:</strong> Cumulative return, drawdown, Sharpe ratio</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h5 class="font-semibold text-slate-800 mb-3">Alternative Validation Approach</h5>
+                  <div class="bg-emerald-50 rounded-lg p-4 mb-4">
+                    <h6 class="font-semibold text-emerald-800 mb-2">Closing Line Value (CLV) Analysis</h6>
+                    <p class="text-sm text-emerald-700 mb-2">
+                      Compare predictions vs. closing odds without waiting for outcomes—
+                      faster feedback, lower variance performance estimate.
+                    </p>
+                  </div>
+
+                  <h6 class="font-semibold text-slate-800 mb-2">Key Advantages</h6>
+                  <ul class="text-sm text-slate-600 space-y-1">
+                    <li>Faster feedback loop for model improvement</li>
+                    <li>Lower variance than outcome-based validation</li>
+                    <li>Direct market efficiency measurement</li>
+                    <li>Early warning for model degradation</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-slate-50 rounded-lg p-4">
+                <p class="text-sm text-slate-600">
+                  <strong>Critical requirement:</strong> Strict temporal integrity preventing lookahead bias,
+                  with proper handling of odds movement between prediction and execution time.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Production Deployment -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-slate-800 mb-8">7.3 Production Deployment</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-server text-blue-600 mr-2"></i>
+                  Prediction API Framework
+                </h4>
+
+                <div class="bg-green-50 rounded-lg p-4 mb-4">
+                  <h5 class="font-semibold text-green-800 mb-2">Recommended: FastAPI</h5>
+                  <p class="text-sm text-green-700 mb-2">
+                    Modern, async framework with automatic documentation, type validation,
+                    and production-ready performance characteristics.
+                  </p>
+                  <div class="text-xs text-green-600">
+                    Alternatives: Flask (simple), Django REST (complex applications)
+                  </div>
+                </div>
+
+                <div class="space-y-3 text-sm">
+                  <div class="bg-blue-50 rounded p-3">
+                    <strong class="text-blue-800">POST /predict/corners</strong>
+                    <div class="text-blue-700">Corner total prediction with confidence intervals</div>
+                  </div>
+                  <div class="bg-orange-50 rounded p-3">
+                    <strong class="text-orange-800">POST /predict/goals</strong>
+                    <div class="text-orange-700">Home/away goal predictions with distributions</div>
+                  </div>
+                  <div class="bg-purple-50 rounded p-3">
+                    <strong class="text-purple-800">POST /predict/outcome</strong>
+                    <div class="text-purple-700">1X2 probability distribution</div>
+                  </div>
+                  <div class="bg-red-50 rounded p-3">
+                    <strong class="text-red-800">POST /predict/all</strong>
+                    <div class="text-red-700">Unified multi-market response with correlations</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-slate-100 rounded-lg">
+                  <p class="text-xs text-slate-600">
+                    <strong>Response structure:</strong> Predicted values, probability distributions,
+                    confidence indicators, feature contributions, and metadata
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg border border-slate-200 p-6">
+                <h4 class="text-lg font-semibold text-slate-800 mb-4">
+                  <i class="fas fa-sync-alt text-green-600 mr-2"></i>
+                  Scheduled Retraining
+                </h4>
+
+                <div class="space-y-4">
+                  <div class="bg-blue-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-blue-800 mb-2">Scheduled Trigger</h5>
+                    <p class="text-sm text-blue-700 mb-1">
+                      Weekly/monthly retraining with new match data incorporation
+                    </p>
+                    <div class="text-xs text-blue-600">
+                      Validation: Time-series CV on recent data
+                      <br/>
+                      Promotion: Non-inferiority to production model
+                    </div>
+                  </div>
+
+                  <div class="bg-orange-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-orange-800 mb-2">Performance Degradation</h5>
+                    <p class="text-sm text-orange-700 mb-1">
+                      As detected through monitoring systems
+                    </p>
+                    <div class="text-xs text-orange-600">
+                      Validation: Immediate holdout test
+                      <br/>
+                      Promotion: Significant improvement required
+                    </div>
+                  </div>
+
+                  <div class="bg-purple-50 rounded-lg p-4">
+                    <h5 class="font-semibold text-purple-800 mb-2">Data Accumulation</h5>
+                    <p class="text-sm text-purple-700 mb-1">
+                      Per N new matches (e.g., every 100 matches)
+                    </p>
+                    <div class="text-xs text-purple-600">
+                      Validation: Rolling window validation
+                      <br/>
+                      Promotion: Consistent improvement trend
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-slate-100 rounded-lg">
+                  <p class="text-xs text-slate-600">
+                    <strong>Deployment strategies:</strong> A/B testing, shadow deployment,
+                    blue-green deployment with careful monitoring
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-6">Monitoring and Alerting Infrastructure</h4>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h5 class="font-semibold text-slate-800 mb-4">Drift Detection Methods</h5>
+                  <div class="space-y-3">
+                    <div class="bg-red-50 rounded p-3">
+                      <strong class="text-red-800">Data drift</strong>
+                      <div class="text-sm text-red-700">Feature distribution comparison (KS test, PSI &gt; 0.2)</div>
+                    </div>
+                    <div class="bg-orange-50 rounded p-3">
+                      <strong class="text-orange-800">Concept drift</strong>
+                      <div class="text-sm text-orange-700">Accuracy degradation (2σ below historical mean)</div>
+                    </div>
+                    <div class="bg-yellow-50 rounded p-3">
+                      <strong class="text-yellow-800">Prediction drift</strong>
+                      <div class="text-sm text-yellow-700">Output distribution shift (KL divergence &gt; threshold)</div>
+                    </div>
+                    <div class="bg-green-50 rounded p-3">
+                      <strong class="text-green-800">Performance drift</strong>
+                      <div class="text-sm text-green-700">Realized return vs. expectation (95% CI exclusion)</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h5 class="font-semibold text-slate-800 mb-4">Response Framework</h5>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex items-center p-2 bg-blue-50 rounded">
+                      <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span><strong>Investigate source</strong> - Feature engineering review</span>
+                    </div>
+                    <div class="flex items-center p-2 bg-orange-50 rounded">
+                      <div class="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                      <span><strong>Model retraining</strong> - Architecture review</span>
+                    </div>
+                    <div class="flex items-center p-2 bg-red-50 rounded">
+                      <div class="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                      <span><strong>Validation against ground truth</strong> - Potential suspension</span>
+                    </div>
+                    <div class="flex items-center p-2 bg-green-50 rounded">
+                      <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                      <span><strong>Strategy review</strong> - Risk limit activation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-slate-50 rounded-lg p-4">
+                <h5 class="font-semibold text-slate-800 mb-3">Integrated Monitoring Stack</h5>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 text-sm">
+                  <div class="bg-blue-50 rounded p-3">
+                    <strong class="text-blue-800">MLflow</strong>
+                    <div class="text-blue-700">Experiment tracking, model versioning</div>
+                  </div>
+                  <div class="bg-green-50 rounded p-3">
+                    <strong class="text-green-800">Prometheus/Grafana</strong>
+                    <div class="text-green-700">Operational metrics, system health</div>
+                  </div>
+                  <div class="bg-purple-50 rounded p-3">
+                    <strong class="text-purple-800">PagerDuty/Slack</strong>
+                    <div class="text-purple-700">Alerting, incident response</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section class="px-8 py-16 bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-2xl font-bold serif text-slate-800 mb-8">References</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm text-slate-600">
+            <div class="space-y-2">
+              <div id="ref-50">[50] LSE Research - <a href="https://eprints.lse.ac.uk/103712/1/Predict_total_goals_LSE.pdf" class="text-blue-600 hover:underline">Predicting Total Goals Study</a>
+              </div>
+              <div id="ref-72">[72] Betfair Data Scientists - <a href="https://betfair-datascientists.github.io/modelling/soccerModellingTutorialPython/" class="text-blue-600 hover:underline">Soccer Modeling Tutorial</a>
+              </div>
+              <div id="ref-97">[97] Training Ground Guru - <a href="https://trainingground.guru/wp-content/uploads/2025/12/Predicting_Football_Match_Outcomes_Using_Event_Data_and_Machine_Learning_Algorithms.pdf" class="text-blue-600 hover:underline">ML Algorithms for Football Prediction</a>
+              </div>
+              <div id="ref-246">[246] PMC Research - <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12708546/" class="text-blue-600 hover:underline">FIFA World Cup Prediction Study</a>
+              </div>
+              <div id="ref-261">[261] Performance Odds - <a href="https://www.performanceodds.com/betting-tricks/european-football-predictions-2025-data-driven-analysis-across-the-top-leagues/" class="text-blue-600 hover:underline">European Football Predictions 2025</a>
+              </div>
+              <div id="ref-268">[268] Performance Odds - <a href="https://www.performanceodds.com/how-to-guides/match-stats-tips-today-how-to-predict-goals-corners-cards-with-data/" class="text-blue-600 hover:underline">Match Stats Prediction Guide</a>
+              </div>
+              <div id="ref-282">[282] Performance Odds - <a href="https://www.performanceodds.com/how-to-guides/first-half-stats-power-guide-goals-corners-cards-patterns-that-predict-winners-in-todays-matches/" class="text-blue-600 hover:underline">First Half Stats Power Guide</a>
+              </div>
+              <div id="ref-310">[310] Football-Data.co.uk - <a href="https://www.football-data.co.uk/data.php" class="text-blue-600 hover:underline">Historical Football Data</a>
+              </div>
+              <div id="ref-334">[334] The Odds API - <a href="https://the-odds-api.com/sports-odds-data/betting-markets.html" class="text-blue-600 hover:underline">Sports Odds Data API</a>
+              </div>
+              <div id="ref-347">[347] Imperial College - <a href="https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/computing/public/distinguished-projects/1718-ug-projects/Corentin-Herbinet-Using-Machine-Learning-techniques-to-predict-the-outcome-of-profressional-football-matches.pdf" class="text-blue-600 hover:underline">ML for Football Match Prediction</a>
+              </div>
+              <div id="ref-361">[361] Mr Super Tips - <a href="https://www.mrsupertips.com/guides/best-football-statistics-websites" class="text-blue-600 hover:underline">Best Football Statistics Websites</a>
+              </div>
+              <div id="ref-367">[367] Live Score API - <a href="https://live-score-api.com/documentation/reference/23/match-statistics" class="text-blue-600 hover:underline">Match Statistics API</a>
+              </div>
+              <div id="ref-368">[368] Sportmonks - <a href="https://www.sportmonks.com/football-api/european-championship-api/" class="text-blue-600 hover:underline">European Championship API</a>
+              </div>
+              <div id="ref-376">[376] Level Up Gitconnected - <a href="https://levelup.gitconnected.com/how-to-get-football-data-with-code-examples-for-python-and-r-8d3f29938d93" class="text-blue-600 hover:underline">Football Data with Python &amp; R</a>
+              </div>
+              <div id="ref-385">[385] Sportmonks - <a href="https://www.sportmonks.com/glossary/live-football-data-api/" class="text-blue-600 hover:underline">Live Football Data API</a>
+              </div>
+              <div id="ref-386">[386] iSports API - <a href="https://www.isportsapi.com/en/blog/others-2155-top-6-free-sports-data-api-providers:-a-curated-developer-guide-for-2026.html" class="text-blue-600 hover:underline">Free Sports Data API Guide</a>
+              </div>
+              <div id="ref-388">[388] ReadWrite - <a href="https://readwrite.com/gambling/betting/ai-betting-prediction/" class="text-blue-600 hover:underline">AI Betting Prediction</a>
+              </div>
+              <div id="ref-394">[394] Spark MWM - <a href="https://spark.mwm.ai/en/apps/copa-football-predictions/6477779829" class="text-blue-600 hover:underline">COPA Football Predictions</a>
+              </div>
+              <div id="ref-406">[406] ReadWrite - <a href="https://readwrite.com/gambling/betting/ai-betting-prediction/" class="text-blue-600 hover:underline">AI Betting Prediction Analysis</a>
+              </div>
+              <div id="ref-409">[409] GitHub - <a href="https://github.com/danielsaed/futbol_corners_forecast" class="text-blue-600 hover:underline">Futbol Corners Forecast Repository</a>
+              </div>
+              <div id="ref-421">[421] Apify - <a href="https://apify.com/mea/football-intelligence-hub" class="text-blue-600 hover:underline">Football Intelligence Hub</a>
+              </div>
+              <div id="ref-430">[430] Sportmonks - <a href="https://www.sportmonks.com/football-api/european-plan/" class="text-blue-600 hover:underline">European Plan API</a>
+              </div>
+              <div id="ref-439">[439] Imperial College - <a href="https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/computing/public/distinguished-projects/1718-ug-projects/Corentin-Herbinet-Using-Machine-Learning-techniques-to-predict-the-outcome-of-profressional-football-matches.pdf" class="text-blue-600 hover:underline">ML for Professional Football Matches</a>
+              </div>
+              <div id="ref-459">[459] GitHub - <a href="https://github.com/ronyka77/SoccerPredictor_byRichardSzita" class="text-blue-600 hover:underline">SoccerPredictor by Richard Szita</a>
+              </div>
+              <div id="ref-477">[477] Level Up Gitconnected - <a href="https://levelup.gitconnected.com/how-to-get-football-data-with-code-examples-for-python-and-r-8d3f29938d93" class="text-blue-600 hover:underline">Football Data Access Guide</a>
+              </div>
+              <div id="ref-489">[489] Sportmonks - <a href="https://www.sportmonks.com/blogs/sports-statistics-api/" class="text-blue-600 hover:underline">Sports Statistics API</a>
+              </div>
+              <div id="ref-500">[500] GitHub - <a href="https://github.com/danielsaed/futbol_corners_forecast" class="text-blue-600 hover:underline">Futbol Corners Forecast</a>
+              </div>
+              <div id="ref-503">[503] MDPI - <a href="https://www.mdpi.com/2504-4990/7/3/85" class="text-blue-600 hover:underline">Sports Analytics Research</a>
+              </div>
+              <div id="ref-520">[520] LSE ePrints - <a href="https://eprints.lse.ac.uk/103712/1/Predict_total_goals_LSE.pdf" class="text-blue-600 hover:underline">Predicting Total Goals Study</a>
+              </div>
+              <div id="ref-525">[525] Sportmonks - <a href="https://www.sportmonks.com/football-api/football-predictions-api/" class="text-blue-600 hover:underline">Football Predictions API</a>
+              </div>
+              <div id="ref-537">[537] GitHub - <a href="https://github.com/danielsaed/futbol_corners_forecast" class="text-blue-600 hover:underline">Futbol Corners Forecast Repository</a>
+              </div>
+              <div id="ref-542">[542] Sportmonks - <a href="https://www.sportmonks.com/blogs/new-statistics-added-to-our-api/" class="text-blue-600 hover:underline">New Statistics Added to API</a>
+              </div>
+              <div id="ref-551">[551] Sportmonks - <a href="https://www.sportmonks.com/pt-pt/api-futebol/" class="text-blue-600 hover:underline">Portuguese Football API</a>
+              </div>
+              <div id="ref-554">[554] MDPI - <a href="https://www.mdpi.com/2073-431X/11/9/133" class="text-blue-600 hover:underline">CatBoost Football Prediction Study</a>
+              </div>
+              <div id="ref-561">[561] GitHub - <a href="https://github.com/nickpadd/EuropeanFootballLeaguePredictor" class="text-blue-600 hover:underline">European Football League Predictor</a>
+              </div>
+              <div id="ref-564">[564] RSIS International - <a href="https://rsisinternational.org/journals/common/author/uploads/manuscripts/ms_1766825187_6877.docx" class="text-blue-600 hover:underline">Gradient Boosting Framework Comparison</a>
+              </div>
+              <div id="ref-568">[568] TodaysPredict - <a href="https://todayspredict.com/machine-learning-soccer-prediction?date=2026-02-04" class="text-blue-600 hover:underline">Machine Learning Soccer Prediction</a>
+              </div>
+              <div id="ref-581">[581] Performance Odds - <a href="https://www.performanceodds.com/betting-tricks/european-football-predictions-2025-data-driven-analysis-across-the-top-leagues/" class="text-blue-600 hover:underline">European Football Predictions 2025</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Table of Contents functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('section[id], div[id]');
+            
+            // Smooth scrolling for TOC links
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 20;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Active section highlighting
+            function updateActiveTocLink() {
+                let currentSection = '';
+                const scrollPosition = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveTocLink);
+            updateActiveTocLink(); // Initial call
+        });
+        
+        // Mobile TOC toggle (if needed)
+        function toggleTOC() {
+            const toc = document.querySelector('.toc-fixed');
+            toc.classList.toggle('open');
+            const overlay = document.querySelector('.toc-overlay');
+            if (toc.classList.contains('open')) {
+                overlay.style.display = 'block';
+            } else {
+                overlay.style.display = 'none';
+            }
+        }
+
+        // Function to handle window resize
+        function handleResize() {
+            const wrapper = document.querySelector('.toc-fixed');
+            const overlay = document.querySelector('.toc-overlay');
+            if (window.innerWidth <= 1280) {
+                // For small screens, add the toggle button if not present
+                if (!document.querySelector('.toc-toggle')) {
+                    const toggleButton = document.createElement('button');
+                    toggleButton.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+                    toggleButton.className = 'toc-toggle fixed top-4 left-4 z-50 bg-white p-3 rounded-lg shadow-lg border border-slate-200 lg:hidden';
+                    toggleButton.setAttribute('onclick', 'toggleTOC()');
+                    toggleButton.setAttribute('aria-label', 'Toggle table of contents');
+                    document.body.appendChild(toggleButton);
+                }
+                // Ensure the TOC is not in the 'open' state
+                wrapper.classList.remove('open');
+                overlay.style.display = 'none';
+            } else {
+                // For large screens, remove the toggle button if present
+                const toggleButton = document.querySelector('.toc-toggle');
+                if (toggleButton) {
+                    toggleButton.remove();
+                }
+                // Reset the TOC to visible
+                wrapper.classList.remove('open');
+                overlay.style.display = 'none';
+            }
+        }
+
+        // Initial call to set the correct state
+        handleResize();
+        // Add resize event listener
+        window.addEventListener('resize', handleResize);
+    </script>
+  
+
+</body></html>
